@@ -1,0 +1,26 @@
+<idea-plugin>
+    <id>com.github.see99.androidpluginh</id>
+    <name>AndroidPluginH</name>
+    <vendor>see99</vendor>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+<!--    <depends>com.intellij.modules.java</depends>-->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.github.see99.androidpluginh.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.see99.androidpluginh.services.MyProjectService"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="com.github.see99.androidpluginh.listeners.MyProjectManagerListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="com.github.see99.androidpluginh.otherx.SamplePluginTemplateProviderImpl" />
+    </extensions>
+</idea-plugin>
